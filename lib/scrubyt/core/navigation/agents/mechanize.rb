@@ -263,7 +263,7 @@ module Scrubyt
 
         def self.lookup_form_for_tag(tag, widget_name, name_attribute, query_string, index=0)
           Scrubyt.log :ACTION, "typing #{query_string} into the #{widget_name} named '#{name_attribute}'"
-          widget = (FetchAction.get_hpricot_doc/"#{tag}[@name=#{name_attribute}]").map()[index]
+          widget = (FetchAction.get_hpricot_doc/"#{tag}[@name=#{name_attribute}]").map{|x| x}[index]
           form_tag = Scrubyt::XPathUtils.traverse_up_until_name(widget, 'form')
           puts "=" * 100            
           puts ">>#{Scrubyt::XPathUtils.generate_XPath(form_tag, nil, true)}<<"
