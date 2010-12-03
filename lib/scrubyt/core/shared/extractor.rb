@@ -65,6 +65,10 @@ module Scrubyt
           @extractor.next_page_pattern = Scrubyt::Pattern.new('next_page', args, @extractor)
         end
         
+        def current_uri
+          @extractor.get_current_doc_url
+        end
+        
         def method_missing(method_name, *args, &block)
           root_pattern = Scrubyt::Pattern.new(method_name.to_s, args, @extractor, nil, &block)
           @extractor.root_patterns << root_pattern
