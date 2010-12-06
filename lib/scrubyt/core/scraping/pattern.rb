@@ -110,7 +110,10 @@ module Scrubyt
       if type == :tree
         #generate xpaths and regexps
         @filters.each do |filter|
-          filter.generate_XPath_for_example(false) unless @name == 'next_page'
+          unless @name == 'next_page'
+            filter.generate_XPath_for_example(false)
+            Scrubyt.log :XPATH, "Using xpath for #{@name}: #{filter.xpath.to_s}"
+          end
           filter.generate_regexp_for_example
         end
         #when the xpaths of this pattern have been created, its children can make their xpaths relative
