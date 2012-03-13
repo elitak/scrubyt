@@ -30,7 +30,7 @@ private
           outfile = "[FAILED]#{file_name}"
         end
        }
-       outfile.scan(/.+\/(.*)/)[0][0]
+       nil
     end
 
    def self.find_nonexisting_file_name(file_name)

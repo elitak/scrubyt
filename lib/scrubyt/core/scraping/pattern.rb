@@ -256,7 +256,7 @@ module Scrubyt
           all_filter_results << result if all_filter_results.index(result).nil?
           #add the current filter's index to the mapping
            (indices_mapping[result] ||= []) << filter_index
-        end
+        end if !filter_results.nil?
       end
 
       #apply constraints
