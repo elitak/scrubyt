@@ -21,7 +21,7 @@ private
         Scrubyt.log :INFO, "downloading: #{source.scan(/\s*(.+)/)[0][0]}"
         begin
           ua = 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.4) Gecko/20061201 Firefox/2.0.0.4 (Ubuntu-feisty)'
-          path = host_name.scan(/http:\/\/#{base_url}(.+)\//)
+          path = host_name.scan(/http:\/\/#{base_url}(.+)\//)[0][0]
           resp = http.get(path, {'User-Agent'=> ua})
           outfile = DownloadFilter.find_nonexisting_file_name(File.join(@example, file_name))
           FileUtils.mkdir_p @example
